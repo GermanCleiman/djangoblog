@@ -4,11 +4,11 @@ from .views import *
 urlpatterns = [
     path('', home, name = 'index'),
     # paso un parametro tipo slug que es cadena
-    path('generales/', generales, name = 'generales'),
-    path('programacion/', programacion, name = 'programacion'),
-    path('tecnologia/', tecnologia, name = 'tecnologia'),
-    path('tutoriales/', tutoriales, name = 'tutoriales'),
-    path('videojuegos/', videojuegos, name = 'videojuegos'),
+    path('busco/', trabajador, name = 'busco'),
+    path('trabajo/', programacion, name = 'trabajo'),
+    path('comentarios/', tecnologia, name = 'comentarios'),
+    path('administracion/', tutoriales, name = 'administracion'),
+    path('servicios/', videojuegos, name = 'servicios'),
     path('<slug:slug>/', detallePost, name="detalle_post"),
 
 

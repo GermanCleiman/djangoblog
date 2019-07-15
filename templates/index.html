@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>{% block titulo %}Blog de Cleiman Developer{% endblock titulo %}</title>
+    <title>{% block titulo %}Bolsa de trabajo{% endblock titulo %}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
@@ -27,8 +27,8 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand" href="{% url 'blog:index' %}">
-          <img src={% static 'img/logoGer.jpg' %} alt=" Logotipo de German" title="" width="100" heihgt="100"/>
+        <a class="navbar-brand" href="http://cleimangerman.ga/">
+          <img src={% static 'img/logoger.png' %} alt=" Logotipo de German" title="" width="100" heihgt="100"/>
         </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
@@ -40,32 +40,32 @@
               <a class="nav-link" href="{% url 'blog:index' %}">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog:generales' %}">Generales</a>
+              <a class="nav-link" href="{% url 'blog:busco' %}">Busco Trabajo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog:programacion' %}">Programación</a>
+              <a class="nav-link" href="{% url 'blog:trabajo' %}">Ofresco Trabajo</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog:videojuegos' %}">Videojuegos</a>
+              <a class="nav-link" href="{% url 'blog:servicios' %}">Ofresco Servicios</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog:tecnologia' %}">Tecnología</a>
+              <a class="nav-link" href="{% url 'blog:comentarios' %}">comentarios</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'blog:tutoriales' %}">Tutoriales</a>
+              <a class="nav-link" href="{% url 'blog:administracion' %}">Administracion</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url({% block imagen %}{% static 'img/home-bg.jpg' %}{% endblock imagen %})">
+    <header class="masthead" style="background-image: url({% block imagen %}{% static 'img/manos unidas.jpg' %}{% endblock imagen %})">
       <div class="overlay"></div>
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-md-10 mx-auto">
             <div class="site-heading">
-              <h2>{% block titulo_principal %}Blog Cleiman Developer{% endblock titulo_principal %}</h2>
+              <h2>{% block titulo_principal %}BOLSA DE TRABAJO{% endblock titulo_principal %}</h2>
             </div>
           </div>
         </div>
@@ -91,6 +91,7 @@
     </div>
   {% endblock barra_busqueda %}
     <!-- Main Content -->
+{% block post %}
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
@@ -120,6 +121,7 @@
         </div>
       </div>
     </div>
+  {% endblock post %}
 <!-- Paginacion  ----------------------------------------------------->
    <div class="row">
      <div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">

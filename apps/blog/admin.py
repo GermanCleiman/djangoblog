@@ -33,3 +33,6 @@ class AutorAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 admin.site.register(Categoria, CategoriaAdmin)# aca se une
 admin.site.register(Autor, AutorAdmin)# aca se une
 admin.site.register(Post)
+admin.site.register(Trabajador)
+admin.site.register(Servicios)
+admin.site.register(Trabajo)

@@ -1,9 +1,11 @@
-from django.shortcuts import render
-from .models import Post, Categoria
+from django.shortcuts import render, redirect
+from .models import Post, Categoria, Trabajador, Trabajo, Servicios
 from django.shortcuts import get_object_or_404
 # esto valida la consulta y si no existe manda un 404
 from django.db.models import Q
 from django.core.paginator import Paginator
+from .forms import TrabajadorForm
+
 
 # Create your views here.
 
@@ -20,7 +22,7 @@ def home (request):
         # descripcion y .distinct() busca que no se repitan
 
     # paginacion ------------------
-    paginator = Paginator(posts,2)
+    paginator = Paginator(posts,10)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 
@@ -53,7 +55,7 @@ def generales(request):
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 
-    return render(request, 'generales.html', {'posts':posts})
+    return render(request, 'busco.html', {'posts':posts})
 
 def programacion(request):
     queryset = request.GET.get('buscar')
@@ -74,7 +76,7 @@ def programacion(request):
         page = request.GET.get('page')
         posts = paginator.get_page(page)
 
-    return render(request, 'programacion.html', {'posts':posts})
+    return render(request, 'trabajo.html', {'posts':posts})
 
 def tecnologia(request):
     queryset = request.GET.get('buscar')
@@ -95,7 +97,7 @@ def tecnologia(request):
         page = request.GET.get('page')
         posts = paginator.get_page(page)
 
-    return render(request, 'tecnologia.html', {'posts':posts})
+    return render(request, 'comentarios.html', {'posts':posts})
 
 def tutoriales(request):
     queryset = request.GET.get('buscar')
@@ -116,7 +118,7 @@ def tutoriales(request):
         page = request.GET.get('page')
         posts = paginator.get_page(page)
 
-    return render(request, 'tutoriales.html', {'posts':posts})
+    return render(request, 'administracion.html', {'posts':posts})
 
 def videojuegos(request):
     queryset = request.GET.get('buscar')
@@ -137,4 +139,13 @@ def videojuegos(request):
         page = request.GET.get('page')
         posts = paginator.get_page(page)
 
-    return render(request, 'videojuegos.html', {'posts':posts})
+    return render(request, 'servicios.html', {'posts':posts})
+
+def trabajador(request):
+    trabajador_form = TrabajadorForm(request.POST)
+    if trabajador_form.is_valid():
+        trabajador_form.save()
+        return redirect('blog:index')
+    else:
+        trabajador_form = TrabajadorForm()
+        return render(request,'busco.html', {'trabajador_form':trabajador_form})

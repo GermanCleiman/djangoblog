@@ -54,3 +54,63 @@ class Post(models.Model):
 
     def __str__(self):
         return self.titulo
+
+class Trabajador(models.Model):
+    id = models.AutoField(primary_key = True)
+    nombre = models.CharField('Nombres del Autor', blank = False, max_length = 255, null = False)
+    apellidos = models.CharField('Apellidos del Autor', blank = False, max_length = 255, null = False)
+    correo = models.EmailField('Correo electrónico', blank = False, null = False)
+    direccion = models.CharField('Direccion', blank = False, max_length = 255, null = False)
+    telefono1 = models.CharField('Telefono 1', blank = False, max_length = 20, null = False)
+    telefono2 = models.CharField('Telefono 2', blank = False, max_length = 20, null = False)
+    experiencia = RichTextField()
+    ofertas = RichTextField()
+
+    estado = models.BooleanField('Autor Activo/ Autor Desactivado', default = True)
+    fecha_creacion = models.DateField('Fecha de creacion', auto_now = False, auto_now_add = True)
+
+    class Meta:
+        verbose_name = 'Trabajador'
+        verbose_name_plural = 'Trabajadores'
+
+    def __str__(self):
+        return "{0},{1}".format(self.apellidos, self.nombre)
+
+class Servicios(models.Model):
+    id = models.AutoField(primary_key = True)
+    nombre = models.CharField('Nombres del Autor', blank = False, max_length = 255, null = False)
+    apellidos = models.CharField('Apellidos del Autor', blank = False, max_length = 255, null = False)
+    correo = models.EmailField('Correo electrónico', blank = False, null = False)
+    direccion = models.CharField('Direccion', blank = False, max_length = 255, null = False)
+    telefono1 = models.CharField('Telefono 1', blank = False, max_length = 20, null = False)
+    telefono2 = models.CharField('Telefono 2', blank = False, max_length = 20, null = False)
+    oferta = RichTextField()
+    estado = models.BooleanField('Autor Activo/ Autor Desactivado', default = True)
+    fecha_creacion = models.DateField('Fecha de creacion', auto_now = False, auto_now_add = True)
+
+    class Meta:
+        verbose_name = 'Servicio'
+        verbose_name_plural = 'Servicios'
+
+    def __str__(self):
+        return "{0},{1}".format(self.apellidos, self.nombre)
+
+class Trabajo(models.Model):
+    id = models.AutoField(primary_key = True)
+    empresa = models.CharField('Nombres del Autor', blank = False, max_length = 255, null = False)
+    nombre = models.CharField('Nombres del Autor', blank = False, max_length = 255, null = False)
+    apellidos = models.CharField('Apellidos del Autor', blank = False, max_length = 255, null = False)
+    correo = models.EmailField('Correo electrónico', blank = False, null = False)
+    direccion = models.CharField('Direccion', blank = False, max_length = 255, null = False)
+    telefono1 = models.CharField('Telefono 1', blank = False, max_length = 20, null = False)
+    telefono2 = models.CharField('Telefono 2', blank = False, max_length = 20, null = False)
+    oferta = RichTextField()
+    estado = models.BooleanField('Autor Activo/ Autor Desactivado', default = True)
+    fecha_creacion = models.DateField('Fecha de creacion', auto_now = False, auto_now_add = True)
+
+    class Meta:
+        verbose_name = 'Trabajo'
+        verbose_name_plural = 'Trabajos'
+
+    def __str__(self):
+        return "{0},{1},{2}".format(self.apellidos, self.nombre, self.empresa)
