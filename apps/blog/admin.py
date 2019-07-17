@@ -26,13 +26,22 @@ class AutorAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ('nombre', 'apellidos', 'estado','fecha_creacion', 'correo',)
     resource_class = AutorResource
 
+class PostResource(resources.ModelResource):
+    class Meta:
+        model = Post
+
+class PostAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    # agrego barra de busqueda en el ModelAdmin que debe estar unida al registro del modelo
+    search_fields = ['titulo', 'slug', 'descripcion']
+    list_display = ('titulo', 'slug', 'descripcion','fecha_creacion')
+    resource_class = PostResource
 
 
 
 # Register your models here.
 admin.site.register(Categoria, CategoriaAdmin)# aca se une
 admin.site.register(Autor, AutorAdmin)# aca se une
-admin.site.register(Post)
+admin.site.register(Post, PostAdmin)
 admin.site.register(Trabajador)
 admin.site.register(Servicios)
 admin.site.register(Trabajo)
