@@ -37,7 +37,6 @@ class PostAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     resource_class = PostResource
 
 
-
 # Register your models here.
 admin.site.register(Categoria, CategoriaAdmin)# aca se une
 admin.site.register(Autor, AutorAdmin)# aca se une
