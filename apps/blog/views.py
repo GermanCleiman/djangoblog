@@ -33,25 +33,25 @@ def detallePost(request, slug):
 
     return render(request, 'post.html',{'detalle_post': posts})
 
-def generales(request):
+def busco(request):
     queryset = request.GET.get('buscar')
     posts = Post.objects.filter(
         estado = True,
-        categoria = Categoria.objects.get(nombre__iexact = 'Generales')
+        categoria = Categoria.objects.get(nombre__iexact = 'busco')
     )
     if queryset:
         posts = Post.objects.filter(
             Q ( titulo__icontains = queryset ) |
             Q ( descripcion__icontains = queryset ),
             estado = True,
-            categoria = Categoria.objects.get(nombre__iexact = 'Generales'),
+            categoria = Categoria.objects.get(nombre__iexact = 'busco'),
         ).distinct()
     # si a nombre= le agrego nombre__exact= , busca talcual esta escrito generales
     # si agrego __iexact= no importan las mayusculas o minusculas
     # si agrego __icontains= no importan las mayusculas o minusculas
 
     # paginacion ------------------
-    paginator = Paginator(posts,2)
+    paginator = Paginator(posts,10)
     page = request.GET.get('page')
     posts = paginator.get_page(page)
 
